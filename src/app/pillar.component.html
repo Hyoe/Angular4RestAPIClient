@@ -1,0 +1,17 @@
+<div *ngIf="pillars">
+  <h1>Pillars</h1>
+  <ul class="heroes">
+    <li *ngFor="let pillar of pillars" (click)="onSelect(pillar)"
+        [class.selected]="pillar === selectedPillar">
+        <span class="badge">{{pillar.Id}}</span>
+        <span>{{pillar.Name}}</span>
+    </li>
+  </ul>
+</div>
+<div *ngIf="selectedPillar">
+    <h2>
+        {{selectedPillar.Name | uppercase}}
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>
+

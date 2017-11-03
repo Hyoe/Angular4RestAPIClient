@@ -1,0 +1,8 @@
+<div *ngIf="photos">
+    <h2>Photos</h2>
+    <ul class="">
+        <li *ngFor="let photo of photos">
+            {{photo.albumId}} - {{photo.title}} - <img src="{{photo.thumbnailUrl}}">            
+        </li>
+    </ul>
+</div>
