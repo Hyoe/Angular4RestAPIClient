@@ -1,5 +1,8 @@
 export class Pillar {
-    Id: number;
-    Name: string;
-    Description: string;
+
+    featureTitle: String;
+
+    // Id: number;
+    // Name: string;
+    // Description: string;
 }

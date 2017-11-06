@@ -32,9 +32,9 @@ export class PillarComponent implements OnInit {
         this.selectedPillar = pillar;
     }
 
-    gotoDetail(): void {
-        this.router.navigate(['/detail', this.selectedPillar.Id]);
-    }
+    // gotoDetail(): void {
+    //     this.router.navigate(['/detail', this.selectedPillar.Id]);
+    // }
 
 
 
