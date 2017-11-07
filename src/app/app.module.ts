@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PillarDetailComponent } from './pillar-detail.component';
 import { PhotoComponent } from './photo.component';
 import { PhotoService } from './photo.service';
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 
 
 @NgModule({  
@@ -22,7 +23,8 @@ import { PhotoService } from './photo.service';
         BrowserModule,  
         FormsModule,  
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        DragulaModule
     ],
     providers: [
       PillarService,

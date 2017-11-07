@@ -7,8 +7,13 @@ import { Pillar } from './pillar';
 export class PillarService {
 
     private headers = new Headers({'Content-Type': 'application/json'});
-    // private pillarsUrl = "http://localhost:41437/api/values";
     private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
+    
+    // if(isDevMode) {
+    //     this.pillarsUrl = "http://localhost:41437/api/values";
+    // }
+
+    // private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
     
     constructor(private http: Http) { }
 
