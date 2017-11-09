@@ -4,6 +4,8 @@ import { Pillar } from './pillar';
 import { PhotoService } from './photo.service';
 import { PhotoComponent } from './photo.component';
 import { Photo } from './photo';
+import { SecretService } from './secret.service';
+import { AdalService } from 'ng2-adal/dist/core';
 
 @Component({  
   selector: 'app-root',  
@@ -13,6 +15,17 @@ import { Photo } from './photo';
 
 export class AppComponent {  
   title: string = "Angular Test";
+  profile: any;
+  
+    constructor(
+        private adalService: AdalService,
+        private secretService: SecretService) {
+        this.adalService.init(this.secretService.adalConfig);
+    }
+    ngOnInit(): void {
+      this.adalService.handleWindowCallback();
+      this.adalService.getUser();
+  }
 }
 
 
