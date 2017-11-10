@@ -26,7 +26,7 @@ export class AppComponent {
     this.oauthService.logoutUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/logout';
     this.oauthService.redirectUri = window.location.origin + '/';
     this.oauthService.scope = 'openid';
-    this.oauthService.oidc = true;
+    this.oauthService.oidc = false;
     this.oauthService.setStorage(sessionStorage);
   }
 
