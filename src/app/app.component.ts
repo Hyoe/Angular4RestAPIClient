@@ -21,7 +21,7 @@ export class AppComponent {
 
   private async ConfigureAuth(): Promise<void> {
     this.oauthService.loginUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize';
-    this.oauthService.clientId = '62fcfd5c-59cf-40b9-ba1a-958da0c55357';
+    this.oauthService.clientId = 'b291b40a-b8db-4377-b645-8b46a4a9d48e';
     this.oauthService.resource = 'https://angulartestapimssr.azurewebsites.net';
     this.oauthService.logoutUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/logout';
     this.oauthService.redirectUri = window.location.origin + '/';
