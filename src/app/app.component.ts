@@ -21,26 +21,26 @@ export class AppComponent {
 
   private async ConfigureAuth(): Promise<void> {
     this.oauthService.loginUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize';
-    this.oauthService.clientId = '4269bbc8-3492-43e9-bb53-56901682d7e1';
+    this.oauthService.clientId = '37260253-dfea-4d2b-a440-86fa69b0a7d7';
     this.oauthService.resource = 'https://angulartestapimssr.azurewebsites.net';
     this.oauthService.logoutUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/logout';
     this.oauthService.redirectUri = window.location.origin + '/';
     this.oauthService.scope = 'openid';
-    this.oauthService.oidc = false;
+    this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
   }
 
-    async ngOnInit() {
-      await this.ConfigureAuth();
-      this.oauthService.tryLogin({});
+  async ngOnInit() {
+    await this.ConfigureAuth();
+    this.oauthService.tryLogin({});
 
-      if (!this.oauthService.getAccessToken()) {
-        await this.oauthService.initImplicitFlow();
-      }
-      console.log(this.oauthService.getAccessToken());
+    if (!this.oauthService.getAccessToken()) {
+      await this.oauthService.initImplicitFlow();
     }
-  
+    console.log(this.oauthService.getAccessToken());
   }
+  
+}
 
 
 
