@@ -14,6 +14,10 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { UrlHelperService } from 'angular-oauth2-oidc';
 
 
+import {AdalService} from 'ng2-adal/dist/core';
+import {SecretService} from './secret.service';
+
+
 @NgModule({  
     declarations: [  
         AppComponent,
@@ -32,7 +36,9 @@ import { UrlHelperService } from 'angular-oauth2-oidc';
       PillarService,
       PhotoService,
       OAuthService,
-      UrlHelperService
+      UrlHelperService,
+      AdalService,
+      SecretService
     ],
     bootstrap: [AppComponent]  
 })  
