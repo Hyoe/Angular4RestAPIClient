@@ -19,39 +19,28 @@ import {AdalService} from "ng2-adal/dist/services/adal.service";
 export class AppComponent implements OnInit {  
   title: string = "Angular Test";
 
-  ngOnInit(): void {
-    this.adalService.handleWindowCallback();
-    this.adalService.getUser();
+  constructor(private oauthService: OAuthService) { }
+
+  private async ConfigureAuth(): Promise<void> {
+    this.oauthService.loginUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize';
+    this.oauthService.clientId = 'f517cdbc-e3b9-4d75-a019-269421890c4f';
+    this.oauthService.resource = 'https://angulartestapimssr.azurewebsites.net';
+    this.oauthService.logoutUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/logout';
+    this.oauthService.redirectUri = window.location.origin + '/';
+    this.oauthService.scope = 'openid';
+    this.oauthService.oidc = true;
+    this.oauthService.setStorage(sessionStorage);
   }
-  constructor(
-    private adalService: AdalService,
-    private secretService: SecretService
-  ) {
-    this.adalService.init(this.secretService.adalConfig);
+
+  async ngOnInit() {
+    await this.ConfigureAuth();
+    this.oauthService.tryLogin({});
+
+    if (!this.oauthService.getAccessToken()) {
+      await this.oauthService.initImplicitFlow();
+    }
+    console.log(this.oauthService.getAccessToken());
   }
-
-  // constructor(private oauthService: OAuthService) { }
-
-  // private async ConfigureAuth(): Promise<void> {
-  //   this.oauthService.loginUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize';
-  //   this.oauthService.clientId = 'f517cdbc-e3b9-4d75-a019-269421890c4f';
-  //   this.oauthService.resource = 'https://angulartestapimssr.azurewebsites.net';
-  //   this.oauthService.logoutUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/logout';
-  //   this.oauthService.redirectUri = window.location.origin + '/';
-  //   this.oauthService.scope = 'openid';
-  //   this.oauthService.oidc = true;
-  //   this.oauthService.setStorage(sessionStorage);
-  // }
-
-  // async ngOnInit() {
-  //   await this.ConfigureAuth();
-  //   this.oauthService.tryLogin({});
-
-  //   if (!this.oauthService.getAccessToken()) {
-  //     await this.oauthService.initImplicitFlow();
-  //   }
-  //   console.log(this.oauthService.getAccessToken());
-  // }
   
 }
 

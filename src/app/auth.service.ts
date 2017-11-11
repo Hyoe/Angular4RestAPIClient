@@ -8,7 +8,7 @@ export class AuthService {
     constructor(private adalService: AdalService) {}
 
     public getToken(): Observable<string> {
-        return this.adalService.acquireToken("https://angular4restapiclient.azurewebsites.net").map(
+        return this.adalService.acquireToken("https://hyoyoegmail.onmicrosoft.com/angular4restapiclient").map(
             token => token.toString()
         );
     }
