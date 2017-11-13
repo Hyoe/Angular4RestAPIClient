@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';  
 import { AppComponent } from './app.component';  
 import { FormsModule } from '@angular/forms';  
-import { HttpModule } from '@angular/http';
+import { Http, HttpModule } from '@angular/http';
 import { PillarComponent } from './pillar.component';
 import { PillarService } from './pillar.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,10 +12,9 @@ import { PhotoService } from './photo.service';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { UrlHelperService } from 'angular-oauth2-oidc';
-
-
-import {AdalService} from 'ng2-adal/dist/core';
-import {SecretService} from './secret.service';
+import { AdalService } from 'ng2-adal/dist/core';
+import { SecretService } from './secret.service';
+import { Adal4Service, Adal4HTTPService } from 'adal-angular4';
 
 
 @NgModule({  
@@ -38,7 +37,13 @@ import {SecretService} from './secret.service';
       OAuthService,
       UrlHelperService,
       AdalService,
-      SecretService
+      SecretService,
+      Adal4Service,
+      {
+          provide: Adal4HTTPService,
+          useFactory: Adal4HTTPService.factory,
+          deps: [Http, Adal4Service]
+      }
     ],
     bootstrap: [AppComponent]  
 })  

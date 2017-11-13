@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Pillar } from './pillar';
+import { Adal4HTTPService } from 'adal-angular4';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class PillarService {
@@ -15,7 +17,7 @@ export class PillarService {
 
     // private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
     
-    constructor(private http: Http) { }
+    constructor(private http: Adal4HTTPService) { }
 
     getPillars(): Promise<Pillar[]> {
         return this.http.get(this.pillarsUrl)
