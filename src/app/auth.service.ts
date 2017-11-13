@@ -1,15 +1,15 @@
-import {Component, Injectable} from '@angular/core';
-import {AdalService} from 'ng2-adal/dist/core';
-import {Observable} from 'rxjs';
+// import {Component, Injectable} from '@angular/core';
+// import {AdalService} from 'ng2-adal/dist/core';
+// import {Observable} from 'rxjs';
 
-@Injectable()
-export class AuthService {
+// @Injectable()
+// export class AuthService {
 
-    constructor(private adalService: AdalService) {}
+//     constructor(private adalService: AdalService) {}
 
-    public getToken(): Observable<string> {
-        return this.adalService.acquireToken("https://hyoyoegmail.onmicrosoft.com/angular4restapiclient").map(
-            token => token.toString()
-        );
-    }
-}
+//     public getToken(): Observable<string> {
+//         return this.adalService.acquireToken("https://hyoyoegmail.onmicrosoft.com/angular4restapiclient").map(
+//             token => token.toString()
+//         );
+//     }
+// }

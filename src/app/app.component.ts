@@ -4,10 +4,10 @@ import { Pillar } from './pillar';
 import { PhotoService } from './photo.service';
 import { PhotoComponent } from './photo.component';
 import { Photo } from './photo';
-import { OAuthService } from 'angular-oauth2-oidc';
+// import { OAuthService } from 'angular-oauth2-oidc';
 
-import {SecretService} from "./secret.service";
-import {AdalService} from "ng2-adal/dist/services/adal.service";
+// import {SecretService} from "./secret.service";
+// import {AdalService} from "ng2-adal/dist/services/adal.service";
 
 import { Adal4Service } from 'adal-angular4';
 import { environment } from '../environments/environment';
