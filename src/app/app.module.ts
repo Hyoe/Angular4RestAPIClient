@@ -10,6 +10,8 @@ import { PillarDetailComponent } from './pillar-detail.component';
 import { PhotoComponent } from './photo.component';
 import { PhotoService } from './photo.service';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { UrlHelperService } from 'angular-oauth2-oidc';
 
 
 @NgModule({  
@@ -28,7 +30,9 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
     ],
     providers: [
       PillarService,
-      PhotoService
+      PhotoService,
+      OAuthService,
+      UrlHelperService
     ],
     bootstrap: [AppComponent]  
 })  
