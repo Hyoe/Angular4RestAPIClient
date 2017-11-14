@@ -10,6 +10,8 @@ export class PillarService {
 
     private headers = new Headers({'Content-Type': 'application/json'});
     private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
+
+    private photosUrl = "https://jsonplaceholder.typicode.com/photos";
     
     // if(isDevMode) {
     //     this.pillarsUrl = "http://localhost:41437/api/values";
@@ -20,7 +22,7 @@ export class PillarService {
     constructor(private http: Adal4HTTPService) { }
 
     getPillars(): Promise<Pillar[]> {
-        return this.http.get(this.pillarsUrl)
+        return this.http.get(this.photosUrl)
             .toPromise()
             .then(response => response.json() as Pillar[])
             .catch(this.handleError);

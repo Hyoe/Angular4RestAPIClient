@@ -27,14 +27,7 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    if (!this.adalSvc.userInfo.authenticated) {
-      this.adalSvc.login();
-    }
-
-
     this.adalSvc.handleWindowCallback();
-
-    
   }
 
   // constructor(private oauthService: OAuthService) { }
