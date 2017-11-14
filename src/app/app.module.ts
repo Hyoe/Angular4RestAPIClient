@@ -15,7 +15,6 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 // import { AdalService } from 'ng2-adal/dist/core';
 // import { SecretService } from './secret.service';
 import { Adal4Service, Adal4HTTPService } from 'adal-angular4';
-import { LoginComponent } from './login/login.component';
 
 
 @NgModule({  
@@ -23,8 +22,7 @@ import { LoginComponent } from './login/login.component';
         AppComponent,
         PillarComponent,
         PillarDetailComponent,
-        PhotoComponent,
-        LoginComponent
+        PhotoComponent
     ],  
     imports: [  
         BrowserModule,  

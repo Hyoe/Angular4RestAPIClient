@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 import { Pillar } from './pillar';
 import { Adal4HTTPService } from 'adal-angular4';
 import { environment } from '../environments/environment';
@@ -10,8 +12,6 @@ export class PillarService {
 
     private headers = new Headers({'Content-Type': 'application/json'});
     private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
-
-    private photosUrl = "https://jsonplaceholder.typicode.com/photos";
     
     // if(isDevMode) {
     //     this.pillarsUrl = "http://localhost:41437/api/values";
@@ -22,7 +22,7 @@ export class PillarService {
     constructor(private http: Adal4HTTPService) { }
 
     getPillars(): Promise<Pillar[]> {
-        return this.http.get(this.photosUrl)
+        return this.http.get(this.pillarsUrl)
             .toPromise()
             .then(response => response.json() as Pillar[])
             .catch(this.handleError);
