@@ -22,12 +22,12 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {  
   title: string = "Angular Test";
 
-  constructor(private adalSvc: Adal4Service) {
-    this.adalSvc.init(environment.adalConfig);
-  }
+  // constructor(private adalSvc: Adal4Service) {
+  //   this.adalSvc.init(environment.adalConfig);
+  // }
  
   ngOnInit(): void {
-    this.adalSvc.handleWindowCallback();
+    // this.adalSvc.handleWindowCallback();
   }
 
   // constructor(private oauthService: OAuthService) { }

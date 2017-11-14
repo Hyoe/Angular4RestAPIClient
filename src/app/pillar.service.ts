@@ -19,7 +19,7 @@ export class PillarService {
 
     // private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
     
-    constructor(private http: Adal4HTTPService) { }
+    constructor(private http: Http) { }
 
     getPillars(): Promise<Pillar[]> {
         return this.http.get(this.pillarsUrl)

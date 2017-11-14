@@ -30,14 +30,15 @@ export class PillarComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getPillars();
         
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
         
-           if (this.adalSvc.userInfo.authenticated) {
-            this.getPillars();
-           } else {
-             this.adalSvc.login();
-           }
+        //    if (this.adalSvc.userInfo.authenticated) {
+            
+        //    } else {
+        //      this.adalSvc.login();
+        //    }
     }
 
     onSelect(pillar: Pillar): void {
