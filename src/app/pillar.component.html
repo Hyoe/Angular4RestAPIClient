@@ -1,13 +1,35 @@
-<div *ngIf="pillars">
-  <h1>Pillars</h1>
-  <ul class="heroes">
-    <li *ngFor="let pillar of pillars" (click)="onSelect(pillar)"
-        [class.selected]="pillar === selectedPillar">
-        <!-- <span class="badge">{{pillar.Id}}</span> -->
-        <span>{{pillar.featureTitle}}</span>
-    </li>
-  </ul>
+<div class="container">
+    <div class="row">
+        
+        <div *ngIf="pillars" class="col-md-6">
+            <h1>Title</h1>
+            <ul class="heroes" [dragula]='"bag-items"'>
+                <li *ngFor="let pillar of pillars" (click)="onSelect(pillar)"
+                    [class.selected]="pillar === selectedPillar">
+                    <!-- <span class="badge">{{pillar.Id}}</span> -->
+                    <span>{{pillar.featureTitle}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h1>Container</h1>
+            <ul class="heroes" [dragula]='"bag-items"'>
+                <li *ngFor="let pillar of pillars" (click)="onSelect(pillar)"
+                    [class.selected]="pillar === selectedPillar">
+                    <!-- <span class="badge">{{pillar.Id}}</span> -->
+                    <span>{{pillar.featureTitle}}</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
 </div>
+
+
+
+
+
 <div *ngIf="selectedPillar">
     <h2>
         <!-- {{selectedPillar.Name | uppercase}} -->
