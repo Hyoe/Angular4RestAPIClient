@@ -20,7 +20,7 @@ export class PillarService {
     constructor(private http: Http) { }
 
     getPillars(): Promise<Pillar[]> {
-        return this.http.post(this.pillarsUrl, {})
+        return this.http.get(this.pillarsUrl)
             .toPromise()
             .then(response => response.json() as Pillar[])
             .catch(this.handleError);
