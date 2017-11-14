@@ -4,8 +4,6 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import { Pillar } from './pillar';
-import { Adal4HTTPService } from 'adal-angular4';
-import { environment } from '../environments/environment';
 
 @Injectable()
 export class PillarService {

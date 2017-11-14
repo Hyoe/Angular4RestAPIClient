@@ -4,7 +4,6 @@ import { Pillar } from './pillar';
 import { PillarService } from './pillar.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import { Adal4Service } from 'adal-angular4';
 
 @Component({  
     selector: 'pillar',  
@@ -18,8 +17,6 @@ export class PillarComponent implements OnInit {
 
     constructor(
         private pillarService: PillarService,
-        private route: ActivatedRoute,
-        private adalSvc: Adal4Service,
         private router: Router
     ) { }
     
@@ -31,14 +28,6 @@ export class PillarComponent implements OnInit {
 
     ngOnInit(): void {
         this.getPillars();
-        
-        // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        
-        //    if (this.adalSvc.userInfo.authenticated) {
-            
-        //    } else {
-        //      this.adalSvc.login();
-        //    }
     }
 
     onSelect(pillar: Pillar): void {
