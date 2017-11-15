@@ -18,7 +18,7 @@ export class PillarService {
 
     private headerOptions = new RequestOptions({
         headers: new Headers({
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + this.oauthService.getAccessToken()
         })
     });
