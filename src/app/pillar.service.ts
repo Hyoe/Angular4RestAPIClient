@@ -16,22 +16,18 @@ export class PillarService {
     
     constructor(private http: Http, private oauthService: OAuthService) { }
 
-    private options = new RequestOptions({
-              headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + this.oauthService.getAccessToken()
-
-              })
+    private headerOptions = new RequestOptions({
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.oauthService.getAccessToken()
+        })
     });
-        
-         
-
 
     //private headers = new Headers('Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.oauthService.getAccessToken());
     private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
 
     getPillars(): Promise<Pillar[]> {
-        return this.http.get(this.pillarsUrl, this.options)
+        return this.http.get(this.pillarsUrl, this.headerOptions)
             .toPromise()
             .then(response => response.json() as Pillar[])
             .catch(this.handleError);

@@ -9,7 +9,7 @@ import 'rxjs/add/operator/switchMap';
     selector: 'pillar',  
     templateUrl: './pillar.component.html',  
     styleUrls: ['./app.component.css']  
-  })
+})
 
 export class PillarComponent implements OnInit {
     pillars: Pillar[];
