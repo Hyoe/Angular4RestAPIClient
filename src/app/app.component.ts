@@ -22,8 +22,13 @@ export class AppComponent implements OnInit {
   private async ConfigureAuth(): Promise<void> {
     this.oauthService.loginUrl = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize'; //endpoint
 
-    this.oauthService.tokenEndpoint = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/token'; //endpoint
+    //this.oauthService.tokenEndpoint = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/token'; //endpoint
 
+    this.oauthService.responseType = 'token id_token';
+
+    this.oauthService.userinfoEndpoint = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/openid/userinfo';
+
+    this.oauthService.issuer = 'https://sts.windows.net/74938eab-1c7b-4d9c-8497-f9c3b262aae0/';
 
     this.oauthService.clientId = '10e7a440-1b2d-4396-9cf3-90a73d841648'; //application ID
     this.oauthService.resource = 'https://hyoyoegmail.onmicrosoft.com/6eb52dd1-1712-49d1-9103-ed25485af3e3'; //backend AAD URI
@@ -32,25 +37,27 @@ export class AppComponent implements OnInit {
     //this.oauthService.scope = 'openid';
     this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
-    //this.oauthService.oidc = false;
-    this.oauthService.scope = 'openid profile email offline_access roles identity';
-    //this.oauthService.setupAutomaticSilentRefresh();
+    this.oauthService.scope = 'openid profile email offline_access roles identity voucher given_name nonce aud';
+    // this.oauthService.customQueryParams = {
+    //   'tenant': '74938eab-1c7b-4d9c-8497-f9c3b262aae0',
+    // };
   }
 
   async ngOnInit() {
     await this.ConfigureAuth();
-    this.oauthService.tryLogin({
-      validationHandler: context => {
-        var search = new URLSearchParams();
-        search.set('token', context.idToken); 
-        search.set('client_id', this.oauthService.clientId);
-        return this.http.get('https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize', { search }).toPromise();
-    }
+    await this.oauthService.tryLogin({
+    //   validationHandler: context => {
+    //     var search = new URLSearchParams();
+    //     search.set('idToken', context.idToken); 
+    //     search.set('client_id', this.oauthService.clientId);
+    //     return this.http.get('https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/oauth2/authorize', { search }).toPromise();
+    //   }
     });
 
     if (!this.oauthService.getAccessToken()) {
       await this.oauthService.initImplicitFlow();
     }
+
     console.log("access token - " + this.oauthService.getAccessToken());
     console.log("Id token - " + this.oauthService.getIdToken());
     console.log("expiration - " + this.oauthService.getAccessTokenExpiration());
