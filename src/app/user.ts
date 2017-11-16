@@ -1,3 +1,4 @@
 export class User {
-    givenName: String;    
+    given_name: String;
+    family_name: String;
 }

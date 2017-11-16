@@ -6,6 +6,8 @@ import 'rxjs/add/operator/switchMap';
 import { Pillar } from './pillar';
 import { OAuthService } from 'angular-oauth2-oidc';
 
+import { User } from './user';
+
 @Injectable()
 export class PillarService {    
     // if(isDevMode) {
@@ -26,6 +28,8 @@ export class PillarService {
     //private headers = new Headers('Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.oauthService.getAccessToken());
     private pillarsUrl = "https://angulartestapimssr.azurewebsites.net/api/values/getfeature";
 
+    
+
     getPillars(): Promise<Pillar[]> {
         return this.http.get(this.pillarsUrl, this.headerOptions)
             .toPromise()
@@ -44,7 +48,7 @@ export class PillarService {
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
-    }    
+    }
 }
 
 // export class PillarComponent implements OnInit {  
