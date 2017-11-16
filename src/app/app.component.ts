@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
     this.oauthService.responseType = 'token id_token';
 
-    this.oauthService.userinfoEndpoint = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/openid/userinfo';
+    //this.oauthService.userinfoEndpoint = 'https://login.microsoftonline.com/74938eab-1c7b-4d9c-8497-f9c3b262aae0/openid/userinfo';
 
     this.oauthService.issuer = 'https://sts.windows.net/74938eab-1c7b-4d9c-8497-f9c3b262aae0/';
 
