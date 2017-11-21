@@ -4,6 +4,8 @@ import { Pillar } from './pillar';
 import { PillarService } from './pillar.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import { User } from './user';
+import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 
 @Component({  
     selector: 'pillar',  
@@ -14,10 +16,13 @@ import 'rxjs/add/operator/switchMap';
 export class PillarComponent implements OnInit {
     pillars: Pillar[];
     selectedPillar: Pillar;
+    userName: User;
+
 
     constructor(
         private pillarService: PillarService,
-        private router: Router
+        private router: Router,
+        private oauthService: OAuthService,
     ) { }
     
     getPillars(): void {
@@ -28,10 +33,17 @@ export class PillarComponent implements OnInit {
 
     ngOnInit(): void {
         this.getPillars();
+        this.getUserName();
     }
 
     onSelect(pillar: Pillar): void {
         this.selectedPillar = pillar;
+    }
+
+    getUserName(): void {
+        this.pillarService
+            .getUserName()
+            .then(userName => this.userName = userName)
     }
 
     // gotoDetail(): void {
